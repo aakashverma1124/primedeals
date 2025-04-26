@@ -2,7 +2,7 @@
 
 ### Project Installation
 
-`npx create-next-app@latest prostore`
+`npx create-next-app@latest primedeals`
 
 Choose all the default options.
 Typescript? Yes
@@ -78,7 +78,7 @@ className={`${inter.className} antialiased`}
 
 ```js
 export const metadata: Metadata = {
-  title: "Prostore",
+  title: "Prime Deals",
   description: "An ecommerce app",
 };
 ```
@@ -135,7 +135,7 @@ export const metadata: Metadata = {
 - Add the following variables inside `index.ts`
 
 ```js
-export const APP_NAME = "Prostore";
+export const APP_NAME = "Prime Deals";
 export const APP_DESCRIPTION = "A modern ecommerce app.";
 export const SERVER_URL = "http://localhost:3000";
 ```
@@ -143,7 +143,7 @@ export const SERVER_URL = "http://localhost:3000";
 But we want to read them from `.env` file, so let's create one in the root directory.
 
 ```yml
-NEXT_PUBLIC_APP_NAME="Prostore"
+NEXT_PUBLIC_APP_NAME="Prime Deals"
 NEXT_PUBLIC_APP_DESCRIPTION="A modern ecommerce app."
 NEXT_PUBLIC_SERVER_URL="http://localhost:3000"
 ```
@@ -151,7 +151,7 @@ NEXT_PUBLIC_SERVER_URL="http://localhost:3000"
 and now read them in `constants/index.ts` file
 
 ```js
-export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Prostore";
+export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Prime Deals";
 export const APP_DESCRIPTION =
   process.env.NEXT_PUBLIC_APP_DESCRIPTION || "A modern ecommerce app.";
 export const SERVER_URL =
@@ -179,3 +179,18 @@ export const metadata = {
 ```
 
 - The page title should be changed to `Home`
+
+### Showing Page Title Dynamically
+
+Make changes in `app/layout.tsx`
+
+```js
+export const metadata: Metadata = {
+  title: {
+    template: `%s | Prime Deals`,
+    default: APP_NAME,
+  },
+  description: APP_DESCRIPTION,
+  metadataBase: new URL(SERVER_URL),
+};
+```
