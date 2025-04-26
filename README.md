@@ -1,36 +1,181 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Steps to execute this project
 
-## Getting Started
+### Project Installation
 
-First, run the development server:
+`npx create-next-app@latest prostore`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Choose all the default options.
+Typescript? Yes
+ESLint? Yes
+Tailwind CSS? Yes
+src/ directory? No
+App Router? Yes
+Turbopack? No
+import alias? No
+
+Try running the project by running `npm run dev`
+
+### Basic Project Structure Setup
+
+`layout.tsx`
+
+Replace
+
+```js
+import { Geist, Geist_Mono } from "next/font/google";
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+to
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```js
+import { Inter } from "next/font/google";
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<hr>
 
-## Learn More
+Replace
 
-To learn more about Next.js, take a look at the following resources:
+```js
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+to
 
-## Deploy on Vercel
+```js
+const inter = Inter({ subsets: ["latin"] });
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<hr>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Replace `className` inside body tag.
+
+```js
+className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+```
+
+to
+
+```js
+className={`${inter.className} antialiased`}
+```
+
+<hr>
+
+### Setup assets directory
+
+- Create `assets` directory inside root directory.
+- Add `loader.gif` inside `assets`.
+- May be use https://iconscout.com/lottie-animations/loading?price=free for loader gif.
+- Change `title` and `description` inside `layout.tsx`
+
+```js
+export const metadata: Metadata = {
+  title: "Prostore",
+  description: "An ecommerce app",
+};
+```
+
+<hr>
+
+- Replace `favicon.ico` inside `/app`
+- Add `images` folder to `/public` and remove existing files from `/public` directory.
+
+### Shadcn UI Setup
+
+- Visit `https://ui.shadcn.com/docs/installation/next`
+- Run `npx shadcn@latest init`
+- Which color would you like to use as the base color? › Slate
+- How would you like to proceed? › Use --legacy-peer-deps
+- Run `npx shadcn@latest add button`
+- This will create `components/ui` directory.
+- Now try changing `Page.tsx` and use `Button` component from shadcn.
+- Add the below code to `globals.css` file
+
+```css
+@layer utilities {
+  .wrapper {
+    @apply max-w-7xl lg:mx-auto p-5 md:px-10 w-full;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-center;
+  }
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .h1-bold {
+    @apply font-bold text-3xl lg:text-4xl;
+  }
+
+  .h2-bold {
+    @apply font-bold text-2xl lg:text-3xl;
+  }
+
+  .h3-bold {
+    @apply font-bold text-xl lg:text-2xl;
+  }
+}
+```
+
+- We want to have some constans now.
+- Create `constants/index.ts` inside `lib` directory.
+- Add the following variables inside `index.ts`
+
+```js
+export const APP_NAME = "Prostore";
+export const APP_DESCRIPTION = "A modern ecommerce app.";
+export const SERVER_URL = "http://localhost:3000";
+```
+
+But we want to read them from `.env` file, so let's create one in the root directory.
+
+```yml
+NEXT_PUBLIC_APP_NAME="Prostore"
+NEXT_PUBLIC_APP_DESCRIPTION="A modern ecommerce app."
+NEXT_PUBLIC_SERVER_URL="http://localhost:3000"
+```
+
+and now read them in `constants/index.ts` file
+
+```js
+export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Prostore";
+export const APP_DESCRIPTION =
+  process.env.NEXT_PUBLIC_APP_DESCRIPTION || "A modern ecommerce app.";
+export const SERVER_URL =
+  process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+```
+
+We can replace the `app/layout.tsx` code something like this and verify on browser, the title will be changed. Try changing the name from `.env` file
+
+```js
+export const metadata: Metadata = {
+  title: `${APP_NAME}`,
+  description: `${APP_DESCRIPTION}`,
+};
+```
+
+<hr>
+
+- Now, we can try passing the metadata if we want to show specific title from any layout.
+- For example: export custom metadata with some title from `(root)/page.tsx`
+
+```js
+export const metadata = {
+  title: "Home",
+};
+```
+
+- The page title should be changed to `Home`
