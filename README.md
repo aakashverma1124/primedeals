@@ -226,3 +226,19 @@ export const metadata: Metadata = {
 - Run `npx shadcn@latest add dropdown-menu` in order to add dropdown menu in the header for theme mode toggling.
 - Create `mode-toggle.tsx` inside `/components/shared` and add dropdown.
 - Add this component to `/components/shared/header/index.tsx`
+
+## ========== Commit 6 ==========
+
+- Add `loading.tsx` in `/app` (Next.js looks for this file, so cannot be empty).
+- To see this working try to add some delay in the home page i.e. inside `app/(root)/page.tsx` like so:
+
+```js
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const Homepage = async () => {
+  await delay(2000);
+  return <></>;
+};
+```
+
+- Now let's add `not-found.tsx` in `/app` (Next.js looks for this file, so cannot be empty).
