@@ -201,3 +201,7 @@ export const metadata: Metadata = {
 - Create `index.tsx` inside `components/shared/header` directory.
 - Import `Header` component inside `app/(root)/layout.tsx`
 - Run `npm i lucide-react` to use `ShoppingCart` and `UserIcon` icons.
+
+## ========== Commit 4 ==========
+
+- Create a `footer.tsx` inside `/components`.
