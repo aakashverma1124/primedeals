@@ -205,3 +205,24 @@ export const metadata: Metadata = {
 ## ========== Commit 4 ==========
 
 - Create a `footer.tsx` inside `/components`.
+
+## ========== Commit 5 ==========
+
+- Install theme provider in order to switch dark and light mode.
+- Run `npm i next-themes`
+- Now wrap `{children}` inside `app/layout.tsx` like so:
+
+```js
+<ThemeProvider
+  attribute='class'
+  defaultTheme='light'
+  enableSystem
+  disableTransitionOnChange
+>
+  {children}
+</ThemeProvider>
+```
+
+- Run `npx shadcn@latest add dropdown-menu` in order to add dropdown menu in the header for theme mode toggling.
+- Create `mode-toggle.tsx` inside `/components/shared` and add dropdown.
+- Add this component to `/components/shared/header/index.tsx`
