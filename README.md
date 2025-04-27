@@ -22,13 +22,13 @@ Try running the project by running `npm run dev`
 Replace
 
 ```js
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from 'next/font/google';
 ```
 
 to
 
 ```js
-import { Inter } from "next/font/google";
+import { Inter } from 'next/font/google';
 ```
 
 <hr>
@@ -37,20 +37,20 @@ Replace
 
 ```js
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 ```
 
 to
 
 ```js
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 ```
 
 <hr>
@@ -78,8 +78,8 @@ className={`${inter.className} antialiased`}
 
 ```js
 export const metadata: Metadata = {
-  title: "Prime Deals",
-  description: "An ecommerce app",
+  title: 'Prime Deals',
+  description: 'An ecommerce app',
 };
 ```
 
@@ -135,9 +135,9 @@ export const metadata: Metadata = {
 - Add the following variables inside `index.ts`
 
 ```js
-export const APP_NAME = "Prime Deals";
-export const APP_DESCRIPTION = "A modern ecommerce app.";
-export const SERVER_URL = "http://localhost:3000";
+export const APP_NAME = 'Prime Deals';
+export const APP_DESCRIPTION = 'A modern ecommerce app.';
+export const SERVER_URL = 'http://localhost:3000';
 ```
 
 But we want to read them from `.env` file, so let's create one in the root directory.
@@ -151,11 +151,11 @@ NEXT_PUBLIC_SERVER_URL="http://localhost:3000"
 and now read them in `constants/index.ts` file
 
 ```js
-export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Prime Deals";
+export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Prime Deals';
 export const APP_DESCRIPTION =
-  process.env.NEXT_PUBLIC_APP_DESCRIPTION || "A modern ecommerce app.";
+  process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'A modern ecommerce app.';
 export const SERVER_URL =
-  process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000';
 ```
 
 We can replace the `app/layout.tsx` code something like this and verify on browser, the title will be changed. Try changing the name from `.env` file
@@ -174,7 +174,7 @@ export const metadata: Metadata = {
 
 ```js
 export const metadata = {
-  title: "Home",
+  title: 'Home',
 };
 ```
 
@@ -194,3 +194,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SERVER_URL),
 };
 ```
+
+### Header Component
+
+- Create `shared/header` inside `components` directory.
+- Create `index.tsx` inside `components/shared/header` directory.
+- Import `Header` component inside `app/(root)/layout.tsx`
+- Run `npm i lucide-react` to use `ShoppingCart` and `UserIcon` icons.
