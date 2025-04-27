@@ -247,3 +247,9 @@ const Homepage = async () => {
 
 - Run `npx shadcn@latest add sheet`
 - Create `menu.tsx` inside `/shared/header` and bring out the logic of right side menu from `header/index.tsx` to `menu.tsx` using shadcn `Sheet` component.
+
+## ========== Commit 8 ==========
+
+- Create `db` in the root directory and add `sample-data.ts`.
+- Create `product-list.tsx` component inside `component/shared/product`
+- Import this component inside `app/(root)/page.tsx`
