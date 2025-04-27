@@ -242,3 +242,8 @@ const Homepage = async () => {
 ```
 
 - Now let's add `not-found.tsx` in `/app` (Next.js looks for this file, so cannot be empty).
+
+## ========== Commit 7 ==========
+
+- Run `npx shadcn@latest add sheet`
+- Create `menu.tsx` inside `/shared/header` and bring out the logic of right side menu from `header/index.tsx` to `menu.tsx` using shadcn `Sheet` component.
