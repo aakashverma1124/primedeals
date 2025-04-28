@@ -253,3 +253,8 @@ const Homepage = async () => {
 - Create `db` in the root directory and add `sample-data.ts`.
 - Create `product-list.tsx` component inside `component/shared/product`
 - Import this component inside `app/(root)/page.tsx`
+
+## ========== Commit 9 ==========
+
+- Run `npx shadcn@latest add card`
+- Create `product-cart.tsx` component inside `component/shared/product` and import it inside `component/shared/product/product-list.tsx`
