@@ -258,3 +258,8 @@ const Homepage = async () => {
 
 - Run `npx shadcn@latest add card`
 - Create `product-cart.tsx` component inside `component/shared/product` and import it inside `component/shared/product/product-list.tsx`
+
+## ========== Commit 10 ==========
+
+- Make sure to add the backend fetch products api first.
+- Make an API call inside `/app/(root)/page.tsx` to fetch the products from backend server.
