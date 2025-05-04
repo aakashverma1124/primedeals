@@ -263,3 +263,10 @@ const Homepage = async () => {
 
 - Make sure to add the backend fetch products api first.
 - Make an API call inside `/app/(root)/page.tsx` to fetch the products from backend server.
+
+## ========== Commit 11 ==========
+
+- Make sure to add the backend fetch product by slug api first.
+- Implement `ProductDetailsPage`.
+- Create file based routing i.e. create a new directory `products/[slug]/page.tsx` inside `/app/(root)/`
+- Make an API call to get product by id.
