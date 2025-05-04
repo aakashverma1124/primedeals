@@ -278,3 +278,8 @@ const Homepage = async () => {
 - Added `Product` type inside `/types/index.ts` and replaced any inside `product-card.tsx`, and `product-list.tsx`.
 - NOTE: Handle fix in the backend API as well. Send `404` when product fetched from backend API is `null`.
 - Fix for `notFound()` in case user tries to access products that do not exists.
+
+## ========== Commit 13 ==========
+
+- Create a new component `product-images.tsx` inside `/component/shared/product`.
+- Import this inside the `ProductDetailsPage` inside `/app/(root)/products/[slug]/page.tsx`
