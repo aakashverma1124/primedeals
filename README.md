@@ -270,3 +270,11 @@ const Homepage = async () => {
 - Implement `ProductDetailsPage`.
 - Create file based routing i.e. create a new directory `products/[slug]/page.tsx` inside `/app/(root)/`
 - Make an API call to get product by id.
+
+## ========== Commit 12 ==========
+
+- Refine `ProductDetailsPage`.
+- `npx shadcn@latest add badge`
+- Added `Product` type inside `/types/index.ts` and replaced any inside `product-card.tsx`, and `product-list.tsx`.
+- NOTE: Handle fix in the backend API as well. Send `404` when product fetched from backend API is `null`.
+- Fix for `notFound()` in case user tries to access products that do not exists.
